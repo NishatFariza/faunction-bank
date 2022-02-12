@@ -18,6 +18,16 @@ function getInputValue(inputId){
   
 }
 
+function updateTotalField(totalFieldId, depositAmount){
+    const depositTotal =document.getElementById(totalFieldId);
+
+    const depositTotalText =depositTotal.innerText;
+    depositTotal.innerText =depositAmount;
+    const perviusDepositTotalAmount =parseFloat(depositTotalText);
+
+    depositTotal.innerText =perviusDepositTotalAmount + depositAmount;
+}
+
 
 
 document.getElementById('deposit-button').addEventListener('click', function(){
@@ -28,14 +38,15 @@ document.getElementById('deposit-button').addEventListener('click', function(){
     const depositAmount =getInputValue('deposit-input');
 
     //get currtent deposit
-    const depositTotal =document.getElementById('deposit-total');
+    /* const depositTotal =document.getElementById('deposit-total');
 
     const depositTotalText =depositTotal.innerText;
     depositTotal.innerText =depositAmount;
     const perviusDepositTotalAmount =parseFloat(depositTotalText);
 
-    depositTotal.innerText =perviusDepositTotalAmount + depositAmount;
+    depositTotal.innerText =perviusDepositTotalAmount + depositAmount; */
     // console.log(depositTotalText);
+    updateTotalField('deposit-total', depositAmount);
 
 
     //update balance
@@ -57,12 +68,15 @@ document.getElementById('withdraw-button').addEventListener('click', function(){
 
   const withdrawAmount=getInputValue('withdraw-input');
     //get current withdraw
-    const withdrawTotal =document.getElementById('withdraw-total');
+   /*  const withdrawTotal =document.getElementById('withdraw-total');
     const withdrawTotalText = withdrawTotal.innerText;
     withdrawTotal.innerText =withdrawAmount;
 
     const priviousWithdrawTotalAmount = parseFloat(withdrawTotalText);
-    withdrawTotal.innerText = priviousWithdrawTotalAmount +withdrawAmount;
+    withdrawTotal.innerText = priviousWithdrawTotalAmount +withdrawAmount; */
+
+
+    updateTotalField('withdraw-total', withdrawAmount);
 
 
     //update balance after withdraw 
@@ -76,4 +90,4 @@ document.getElementById('withdraw-button').addEventListener('click', function(){
 
   //clear withdraw input field
 //   withdrawInput.value ='';
-})
+});
