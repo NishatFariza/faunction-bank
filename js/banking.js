@@ -19,7 +19,7 @@ function getInputValue(inputId){
 }
 
 function updateTotalField(totalFieldId, amount){
-    debugger;
+    // debugger;
     const totalElement =document.getElementById(totalFieldId);
 
     const totalText =totalElement.innerText;
@@ -27,6 +27,13 @@ function updateTotalField(totalFieldId, amount){
     const previousTotal =parseFloat(totalText);
 
     totalElement.innerText =previousTotal + amount;
+}
+
+function updateBalance(depositAmount){
+    const balanceTotal =document.getElementById('balance-total');
+    const balanceTotalText =balanceTotal.innerText;
+    const priviousBalanceTotal =parseFloat(balanceTotalText);
+    balanceTotal.innerText =priviousBalanceTotal + depositAmount;
 }
 
 
@@ -51,11 +58,11 @@ document.getElementById('deposit-button').addEventListener('click', function(){
 
 
     //update balance
-    const balanceTotal =document.getElementById('balance-total');
+ /*    const balanceTotal =document.getElementById('balance-total');
     const balanceTotalText =balanceTotal.innerText;
     const priviousBalanceTotal =parseFloat(balanceTotalText);
-    balanceTotal.innerText =priviousBalanceTotal + depositAmount;
-
+    balanceTotal.innerText =priviousBalanceTotal + depositAmount; */
+  updateBalance(depositAmount);
     
 });
 
