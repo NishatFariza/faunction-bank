@@ -18,14 +18,15 @@ function getInputValue(inputId){
   
 }
 
-function updateTotalField(totalFieldId, depositAmount){
-    const depositTotal =document.getElementById(totalFieldId);
+function updateTotalField(totalFieldId, amount){
+    debugger;
+    const totalElement =document.getElementById(totalFieldId);
 
-    const depositTotalText =depositTotal.innerText;
-    depositTotal.innerText =depositAmount;
-    const perviusDepositTotalAmount =parseFloat(depositTotalText);
+    const totalText =totalElement.innerText;
+    totalElement.innerText =amount;
+    const previousTotal =parseFloat(totalText);
 
-    depositTotal.innerText =perviusDepositTotalAmount + depositAmount;
+    totalElement.innerText =previousTotal + amount;
 }
 
 
