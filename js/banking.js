@@ -19,7 +19,7 @@ function getInputValue(inputId){
 }
 
 function updateTotalField(totalFieldId, amount){
-    // debugger;
+    debugger;
     const totalElement =document.getElementById(totalFieldId);
 
     const totalText =totalElement.innerText;
@@ -29,11 +29,27 @@ function updateTotalField(totalFieldId, amount){
     totalElement.innerText =previousTotal + amount;
 }
 
-function updateBalance(depositAmount){
+function getCurrentBalance(){
     const balanceTotal =document.getElementById('balance-total');
     const balanceTotalText =balanceTotal.innerText;
     const priviousBalanceTotal =parseFloat(balanceTotalText);
-    balanceTotal.innerText =priviousBalanceTotal + depositAmount;
+
+    return priviousBalanceTotal;
+}
+
+function updateBalance(amount, isAdd){
+    // // debugger;
+     const balanceTotal =document.getElementById('balance-total');
+    // const balanceTotalText =balanceTotal.innerText;
+    // const priviousBalanceTotal =parseFloat(balanceTotalText);
+    const priviousBalanceTotal = getCurrentBalance();
+    
+    if(isAdd == true){
+        balanceTotal.innerText =priviousBalanceTotal + amount;
+    }
+    else{
+        balanceTotal.innerText =priviousBalanceTotal - amount;
+    }
 }
 
 
@@ -43,7 +59,7 @@ document.getElementById('deposit-button').addEventListener('click', function(){
     const depositAmountText =depositInput.value;
     const depositAmount =parseFloat(depositAmountText); */
     // console.log(depositAmount);
-    const depositAmount =getInputValue('deposit-input');
+  
 
     //get currtent deposit
     /* const depositTotal =document.getElementById('deposit-total');
@@ -54,7 +70,7 @@ document.getElementById('deposit-button').addEventListener('click', function(){
 
     depositTotal.innerText =perviusDepositTotalAmount + depositAmount; */
     // console.log(depositTotalText);
-    updateTotalField('deposit-total', depositAmount);
+   
 
 
     //update balance
@@ -62,7 +78,11 @@ document.getElementById('deposit-button').addEventListener('click', function(){
     const balanceTotalText =balanceTotal.innerText;
     const priviousBalanceTotal =parseFloat(balanceTotalText);
     balanceTotal.innerText =priviousBalanceTotal + depositAmount; */
-  updateBalance(depositAmount);
+    const depositAmount =getInputValue('deposit-input');
+    if(depositAmount >0){
+        updateTotalField('deposit-total', depositAmount);
+        updateBalance(depositAmount, true);
+    }
     
 });
 
@@ -74,7 +94,7 @@ document.getElementById('withdraw-button').addEventListener('click', function(){
     const withdrawAmount =parseFloat(withdrawAmountText);
     console.log(withdrawAmount); */
 
-  const withdrawAmount=getInputValue('withdraw-input');
+ 
     //get current withdraw
    /*  const withdrawTotal =document.getElementById('withdraw-total');
     const withdrawTotalText = withdrawTotal.innerText;
@@ -84,15 +104,26 @@ document.getElementById('withdraw-button').addEventListener('click', function(){
     withdrawTotal.innerText = priviousWithdrawTotalAmount +withdrawAmount; */
 
 
-    updateTotalField('withdraw-total', withdrawAmount);
+   
 
 
     //update balance after withdraw 
-    const balanceTotal =document.getElementById('balance-total');
+   /*  const balanceTotal =document.getElementById('balance-total');
     const balanceTotalText =balanceTotal.innerText;
     const priviousBalanceTotal =parseFloat(balanceTotalText);
-    balanceTotal.innerText =priviousBalanceTotal - withdrawAmount;
+    balanceTotal.innerText =priviousBalanceTotal - withdrawAmount; */
+    const withdrawAmount=getInputValue('withdraw-input');
+    const currentBalance = getCurrentBalance();
 
+    if(withdrawAmount > 0 && withdrawAmount < currentBalance){
+        updateTotalField('withdraw-total', withdrawAmount);
+        updateBalance(withdrawAmount, false);
+    }
+    if(withdrawAmount < currentBalance){
+        // document.getElementById('withdraw-button')
+        // alert('we can not withdraw more than what you have your account');
+        console.log('We can not withdraw more than what you have your account');
+    }
 
 
 
