@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>My Own bank</title>
+    <!-- css link  -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- tailwind cdn link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="login-page bg-cyan-300">
+    <header>
+      <h1 class="text-5xl text-center mt-12 font-semibold">
+        Welcome To
+        <span class="font-semibold text-purple-600">My Own Bank</span> !!!
+      </h1>
+    </header>
+    <main>
+      <section
+        class="w-3/4 mx-auto mt-16 rounded p-8 shadow-lg shadow-gray-500 bg-white"
+      >
+        <h3 class="text-3xl mb-4 font-semibold">Please Login</h3>
+        <div>
+          <input
+            id="user-email"
+            class="border block border-gray-200 rounded w-3/4 mb-4 px-2 py-3"
+            type="email"
+            name=""
+            id="email"
+            placeholder="Please Enter Your Email"
+          />
+          <input
+            id="user-password"
+            class="border block border-gray-200 rounded w-3/4 mb-4 px-2 py-3"
+            type="password"
+            name=""
+            id="password"
+            placeholder="Enter Your Password"
+          />
+          <button
+            id="login-submit"
+            class="bg-purple-600 text-white py-2 px-4 rounded"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </section>
+    </main>
+    <script src="js/login.js"></script>
+  </body>
+</html>
